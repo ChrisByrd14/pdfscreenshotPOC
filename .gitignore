@@ -1,4 +1,6 @@
 node_modules/
 bin/
 package/
+packages/
 obj/
+.vs/
