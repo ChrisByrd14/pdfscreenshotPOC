@@ -1,0 +1,39 @@
+﻿#form {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto;
+}
+
+.page {
+    height: 11in;
+    width: 8.5in;
+    padding: 0.5in 1in;
+    background: white;
+    margin: 0 auto 0.25em;
+}
+
+.form-inline {
+    margin-top: 0.5em;
+}
+
+span.under-element {
+    font-size: 90%;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive, sans-serif;
+    font-weight: normal;
+    font-size: 1.74em;
+}
+
+input {
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #333;
+
+    &.has-error {
+        border-bottom-color: firebrick;
+    }
+}

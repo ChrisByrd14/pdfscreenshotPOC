@@ -1,0 +1,46 @@
+﻿$sizes: (0em, 0.25em, 0.5em, 1em, 2em, 3em, 4em, 5em);
+
+
+@for $i from 1 through 8 {
+    /* Margin */
+
+    // horizontal
+    .mx-#{$i - 1} {
+        margin-left: nth($sizes, $i);
+        margin-right: nth($sizes, $i);
+    }
+
+    // vertical
+    .my-#{$i - 1} {
+        margin-top: nth($sizes, $i);
+        margin-bottom: nth($sizes, $i);
+    }
+
+    .mt-#{$i - 1} { margin-top: nth($sizes, $i); }
+    .mr-#{$i - 1} { margin-right: nth($sizes, $i); }
+    .mb-#{$i - 1} { margin-bottom: nth($sizes, $i); }
+    .ml-#{$i - 1} { margin-left: nth($sizes, $i); }
+
+    /* Padding */
+
+    // horizontal
+    .px-#{$i - 1} {
+        padding-left: nth($sizes, $i);
+        padding-right: nth($sizes, $i);
+    }
+
+    // vertical
+    .py-#{$i - 1} {
+        padding-top: nth($sizes, $i);
+        padding-bottom: nth($sizes, $i);
+    }
+
+    .pt-#{$i - 1} { padding-top: nth($sizes, $i); }
+    .pr-#{$i - 1} { padding-right: nth($sizes, $i); }
+    .pb-#{$i - 1} { padding-bottom: nth($sizes, $i); }
+    .pl-#{$i - 1} { padding-left: nth($sizes, $i); }
+}
+
+/**
+ * Padding
+ */

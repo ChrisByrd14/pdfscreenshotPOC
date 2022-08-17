@@ -137,6 +137,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\DancingScript-Bold.ttf" />
+    <Content Include="Content\DancingScript-Medium.ttf" />
+    <Content Include="Content\DancingScript-Regular.ttf" />
+    <Content Include="Content\DancingScript-SemiBold.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -148,8 +152,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\src\components\Field.jsx" />
-    <Content Include="Scripts\src\components\Foo.jsx" />
+    <Content Include="Scripts\src\components\FormElements.jsx" />
+    <Content Include="Scripts\src\components\Forms\VolunteerWorkRequest.jsx" />
     <Content Include="Scripts\src\helpers.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Web.config" />
@@ -166,6 +170,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\src\styles\form.scss" />
+    <Content Include="Scripts\src\styles\utilities.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

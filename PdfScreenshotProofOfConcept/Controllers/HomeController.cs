@@ -17,7 +17,8 @@ namespace PdfScreenshotProofOfConcept.Controllers
         [HttpPost]
         public ActionResult PostData(FormCollection form)
         {
-            var file = Request.Files[0];
+            var files = Request.Files;
+            var file = files[0];
 
             //var file = form.Get("file");
             //if (string.IsNullOrWhiteSpace(file))

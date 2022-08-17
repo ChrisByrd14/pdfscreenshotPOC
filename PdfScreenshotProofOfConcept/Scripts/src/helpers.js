@@ -1,5 +1,20 @@
-﻿import { jsPDF } from "jspdf";
+﻿import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
 
+const DEBUG = true;
+
+
+function log(message) {
+    if (DEBUG) {
+        console.log(message);
+    }
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/*
 export function base64toPDF(data) {
     var bufferArray = base64ToArrayBuffer(data);
     var blobStore = new Blob([bufferArray], { type: "application/pdf" });
@@ -18,7 +33,7 @@ export function base64toPDF(data) {
     link.click();
     window.URL.revokeObjectURL(data);
     link.remove();
-     */
+     *
 }
 
 export function base64ToArrayBuffer(data) {
@@ -30,7 +45,8 @@ export function base64ToArrayBuffer(data) {
         bytes[i] = ascii;
     }
     return bytes;
-};
+}
+* /
 
 /**
  * Generate a PDF file from the given canvas and save it to a file input element.
@@ -59,11 +75,60 @@ export function toPdf(canvas, fileName) {
     let container = new DataTransfer();
     container.items.add(file);
 
-    var f = document.getElementById('file');
+    var f = document.getElementsByName('file')[0];
     f.files = container.files;
     if (f.files.length == 0) {
         return 'Unable to add the generated file to the file input.';
     }
 
     return null;
+}
+
+export function submitForm(formId='form', formName='new-form', dataFormId='dataForm') {
+    html2canvas(document.getElementById(formId))
+        .then(function (canvas) {
+            console.log('converting');
+            var result = toPdf(canvas, formName);
+            console.log('result', result);
+            if (result != null) {
+                throw new Error(result);
+            }
+        })
+        .then((e) => {
+            var fileElement = document.getElementsByName('file')[0];
+
+            var count = 0;
+
+            do {
+                if (count == 5) break; // break potential endles loop
+                sleep(250);
+                count += 1;
+            } while (fileElement.files.length == 0);
+
+            document.getElementById(dataFormId).submit();
+            //setTimeout(() => document.getElementById(dataFormId).submit(), 250);
+        })
+        .catch((e) => {
+            alert('An error occurred ' + e);
+        });
+}
+
+export function checkString(subject, minLength = 1, maxLength = 999) {
+    if ([undefined, null].indexOf(subject) != -1) {
+        return false;
+    }
+
+    var trimmed = subject.trim();
+
+    if (minLength > 0 && trimmed == '') {
+        return false;
+    }
+
+    return trimmed.length >= minLength && trimmed.length <= maxLength;
+}
+
+export function addError(message, element) {
+    alert(message);
+    var e = document.getElementsByName(element)[0];
+    e.classList.add("has-error");
 }
