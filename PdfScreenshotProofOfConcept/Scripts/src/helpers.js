@@ -113,6 +113,17 @@ export function submitForm(formId='form', formName='new-form', dataFormId='dataF
         });
 }
 
+/*
+ * Validation helpers
+ */
+
+/**
+ * Check that the given string is not empty undefined/null and its length is within the length parameters.
+ * @param {any} subject
+ * @param {any} minLength
+ * @param {any} maxLength
+ * @returns {boolean}
+ */
 export function checkString(subject, minLength = 1, maxLength = 999) {
     if ([undefined, null].indexOf(subject) != -1) {
         return false;
@@ -127,8 +138,40 @@ export function checkString(subject, minLength = 1, maxLength = 999) {
     return trimmed.length >= minLength && trimmed.length <= maxLength;
 }
 
+/**
+ * Returns true if the given date is valid and in the future.
+ * @param {any} date
+ * @returns {boolean}
+ */
+export function futureDate(date) {
+    try {
+        return new Date() < new Date(date);
+    }
+    catch {
+        return false;
+    }
+}
+
+/**
+ * Returns true if the given date is valid and in the past.
+ * @param {any} date
+ * @returns {boolean}
+ */
+export function pastDate(date) {
+    try {
+        return new Date() > new Date(date);
+    }
+    catch {
+        return false;
+    }
+}
+
 export function addError(message, element) {
     alert(message);
     var e = document.getElementsByName(element)[0];
     e.classList.add("has-error");
+}
+
+export function getToday() {
+    return new Date().toJSON().substring(0, 10);
 }

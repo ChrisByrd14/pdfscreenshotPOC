@@ -4,6 +4,7 @@ import { DateField, NumberField, TextField } from "../FormElements";
 import "../../styles/form";
 import "../../styles/utilities";
 import { addError, checkString, submitForm } from "../../helpers";
+import VolunteerWorkRequestValidator from "../../Validators/VonlunteerWorkRequestValidator";
 
 const INPUT_HEIGHT = {
     'style': {
@@ -37,6 +38,8 @@ export default class VolunteerWorkRequest extends Component {
             ...props,
         };
 
+        this.validator = new VolunteerWorkRequestValidator();
+
         this.changeHandler = this.changeHandler.bind(this);
         this.submit = this.submit.bind(this);
     }
@@ -45,10 +48,6 @@ export default class VolunteerWorkRequest extends Component {
         var target = e.target;
         console.log({ [target.name]: target.value });
         this.setState({ [target.name]: target.value });
-    }
-
-    getFormName() {
-        return 'Volunteer Work Request';
     }
 
     clearErrors() {
@@ -62,25 +61,12 @@ export default class VolunteerWorkRequest extends Component {
         }
     }
 
-    validate() {
-        if (!checkString(this.state.employeeName)) {
-            addError('The employee name field is invalid.', '_employeeName')
-            return false;
-        }
-
-        if ([1, 2, 2.5, 3, 3.5, 4].indexOf(this.state.hoursRequested)) {
-            addError('Valid "Hours Requested" options are: 1, 2, 2.5, 3, 3.5, or 4', '_hoursRequested');
-            return false;
-        }
-
-        // TODO: implement
-        return true
-    }
-
     submit() {
         this.clearErrors();
 
-        if (!this.validate()) {
+        if (!this.validator.validate(this.state)) {
+            var error = this.validator.errors[0];
+            addError(error.message, error.name);
             return;
         }
 

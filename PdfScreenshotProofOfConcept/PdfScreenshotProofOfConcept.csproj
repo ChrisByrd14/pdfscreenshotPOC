@@ -156,6 +156,11 @@
     <Content Include="Scripts\src\components\Forms\VolunteerWorkRequest.jsx" />
     <Content Include="Scripts\src\helpers.js" />
     <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\tests\helpers.test.js" />
+    <Content Include="Scripts\src\tests\jestsetup.js" />
+    <Content Include="Scripts\src\tests\VolunteerWorkRequestValidator.test.js" />
+    <Content Include="Scripts\src\Validators\ValidationError.js" />
+    <Content Include="Scripts\src\Validators\VonlunteerWorkRequestValidator.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
